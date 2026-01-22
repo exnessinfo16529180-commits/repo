@@ -159,12 +159,27 @@ The project includes the following models:
 │   │   ├── layout.tsx    # Root layout
 │   │   ├── page.tsx      # Home page
 │   │   └── globals.css   # Global styles
+│   ├── lib/
+│   │   └── prisma.ts     # Prisma client singleton (use this in your app)
 │   └── generated/        # Generated Prisma Client (auto-generated)
 ├── docker-compose.yml     # PostgreSQL configuration
 ├── .env                   # Environment variables (not committed)
 ├── .env.example          # Environment variables template
 └── README.md             # This file
 ```
+
+## Using Prisma in Your App
+
+To use Prisma in your Next.js application, import the Prisma client from the singleton:
+
+```typescript
+import { prisma } from '@/lib/prisma';
+
+// Example: Fetch all users
+const users = await prisma.user.findMany();
+```
+
+This singleton pattern ensures that only one PrismaClient instance is created, which is important for serverless environments.
 
 ## Troubleshooting
 
