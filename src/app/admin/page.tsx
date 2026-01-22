@@ -1,5 +1,6 @@
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
+import Link from 'next/link';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
 export default async function AdminPage() {
@@ -25,12 +26,12 @@ export default async function AdminPage() {
             <p className="text-sm text-gray-500 dark:text-gray-400">
               This page is restricted to administrators only.
             </p>
-            <a
+            <Link
               href="/"
               className="inline-block mt-6 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
               Return to Home
-            </a>
+            </Link>
           </div>
         </main>
       </div>
@@ -57,18 +58,18 @@ export default async function AdminPage() {
             </p>
           </div>
           <div className="flex gap-4 justify-center">
-            <a
+            <Link
               href="/"
               className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
               Home
-            </a>
-            <a
+            </Link>
+            <Link
               href="/api/auth/signout"
               className="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
             >
               Sign Out
-            </a>
+            </Link>
           </div>
         </div>
       </main>
