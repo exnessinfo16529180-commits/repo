@@ -1,26 +1,214 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
+  /**
+   * Tailwind CSS theme for Digital TAU
+   * Dark theme with TAU burgundy and gold accents
+  */
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* TAU Dark Theme (default) */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 100%;
+
+    /* TAU Burgundy Primary */
+    --primary: 330 48% 39%;
+    --primary-foreground: 0 0% 100%;
+
+    /* TAU Gold Secondary */
+    --secondary: 38 97% 61%;
+    --secondary-foreground: 330 48% 39%;
+
+    --muted: 0 0% 25%;
+    --muted-foreground: 0 0% 65%;
+
+    /* TAU Burgundy Accent */
+    --accent: 330 48% 39%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Dark borders with slight burgundy tint */
+    --border: 0 0% 15%;
+    --input: 0 0% 12%;
+    --ring: 330 48% 39%;
+
+    --radius: 0.5rem;
+
+    /* TAU Sidebar Colors */
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 330 48% 39%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 38 97% 61%;
+    --sidebar-accent-foreground: 330 48% 39%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 330 48% 39%;
+
+    /* Additional TAU Colors */
+    --tau-burgundy-dark: 330 55% 27%;
+    --tau-gold: 38 97% 61%;
+    --tau-gold-light: 38 100% 75%;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+  }
 }
 
+/* Custom animations for Digital TAU */
 @layer utilities {
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(139, 44, 74, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 10px rgba(139, 44, 74, 0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes count-up {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fall-digits {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+
+  @keyframes pixelate-in {
+    0% {
+      opacity: 0;
+      text-shadow:
+        -4px 0 rgba(139, 44, 74, 0.8),
+        4px 0 rgba(245, 166, 35, 0.8),
+        0 -4px rgba(245, 166, 35, 0.8),
+        0 4px rgba(139, 44, 74, 0.8);
+      transform: scale(0.95);
+    }
+    25% {
+      opacity: 0.4;
+      text-shadow:
+        -2px 0 rgba(139, 44, 74, 0.6),
+        2px 0 rgba(245, 166, 35, 0.6),
+        0 -2px rgba(245, 166, 35, 0.6),
+        0 2px rgba(139, 44, 74, 0.6);
+    }
+    50% {
+      opacity: 0.7;
+      text-shadow:
+        -1px 0 rgba(139, 44, 74, 0.4),
+        1px 0 rgba(245, 166, 35, 0.4),
+        0 -1px rgba(245, 166, 35, 0.4),
+        0 1px rgba(139, 44, 74, 0.4);
+      transform: scale(1.02);
+    }
+    75% {
+      opacity: 0.95;
+      text-shadow: none;
+    }
+    100% {
+      opacity: 1;
+      text-shadow: none;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .animate-slideDown {
+    animation: slideDown 0.4s ease-out;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-fall-digits {
+    animation: fall-digits linear infinite;
+  }
+
+  .animate-pixelate-in {
+    animation: pixelate-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
   .text-balance {
     text-wrap: balance;
   }
