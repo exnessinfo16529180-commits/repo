@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { TAULogo } from "./tau-logo";
 import { LanguageSwitcher } from "./language-switcher";

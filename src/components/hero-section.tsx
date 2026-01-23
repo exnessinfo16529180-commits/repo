@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef } from "react";
 import { useLanguage } from "@/lib/language-context";
 import { getTranslation } from "@/lib/i18n";

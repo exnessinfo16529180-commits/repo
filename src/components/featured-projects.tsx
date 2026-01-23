@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { useLanguage } from "@/lib/language-context";
 import { getTranslation } from "@/lib/i18n";

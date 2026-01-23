@@ -1,3 +1,5 @@
+"use client";
+
 import { useLanguage } from "@/lib/language-context";
 import { getTranslation } from "@/lib/i18n";
 import { CheckCircle2 } from "lucide-react";

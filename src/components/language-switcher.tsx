@@ -1,3 +1,5 @@
+"use client";
+
 import { useLanguage } from "@/lib/language-context";
 import { Language } from "@/lib/i18n";
 
