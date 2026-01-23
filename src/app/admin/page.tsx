@@ -6,7 +6,11 @@ export default async function AdminPage() {
   const session = await getServerSession(authOptions);
 
   // Stats data (placeholder)
-  const stats = [
+  const stats: Array<{
+    label: string;
+    value: string;
+    color: 'primary' | 'success' | 'warning' | 'danger';
+  }> = [
     { label: 'Total Posts', value: '12', color: 'primary' },
     { label: 'Total News', value: '8', color: 'success' },
     { label: 'Total Projects', value: '5', color: 'warning' },
@@ -38,7 +42,7 @@ export default async function AdminPage() {
                     {stat.value}
                   </p>
                 </div>
-                <Badge variant={stat.color as any} className="text-lg px-3 py-1">
+                <Badge variant={stat.color} className="text-lg px-3 py-1">
                   {stat.color === 'primary' && '📝'}
                   {stat.color === 'success' && '📰'}
                   {stat.color === 'warning' && '🚀'}
